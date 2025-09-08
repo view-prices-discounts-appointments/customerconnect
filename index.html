@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+  <title>Infinity Salon</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: "Roboto", Arial, sans-serif;
+      background: #f1f5f9;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+    }
+    .app {
+      width: 100%;
+      max-width: 420px;
+      background: #fff;
+      border-radius: 18px;
+      overflow: hidden;
+      box-shadow: 0 8px 30px rgba(0,0,0,0.15);
+      display: flex;
+      flex-direction: column;
+    }
+    header {
+      background: linear-gradient(90deg, #2563eb, #1e40af);
+      padding: 16px;
+      color: #fff;
+      text-align: center;
+    }
+    header h1 { margin: 0; font-size: 20px; }
+    header p { margin: 4px 0 0; font-size: 13px; opacity: 0.9; }
+    main {
+      padding: 18px;
+      flex: 1;
+      overflow-y: auto;
+    }
+    .info {
+      margin-bottom: 16px;
+      background: #f9fafb;
+      border: 1px solid #e5e7eb;
+      border-radius: 12px;
+      padding: 12px 14px;
+      font-size: 14px;
+      color: #374151;
+      text-align: left;
+    }
+    .info strong {
+      display: block;
+      margin-bottom: 4px;
+      color: #111827;
+    }
+    form {
+      margin: 14px 0;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+    input {
+      padding: 12px;
+      border: 1px solid #d1d5db;
+      border-radius: 10px;
+      font-size: 14px;
+    }
+    button {
+      padding: 14px;
+      border: none;
+      border-radius: 12px;
+      background: linear-gradient(90deg, #22c55e, #16a34a);
+      color: #fff;
+      font-weight: bold;
+      font-size: 15px;
+      cursor: pointer;
+    }
+    .actions {
+      padding: 16px;
+      border-top: 1px solid #e5e7eb;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+    .btn {
+      display: block;
+      padding: 14px;
+      text-align: center;
+      text-decoration: none;
+      font-weight: bold;
+      border-radius: 12px;
+      color: #fff;
+      font-size: 15px;
+      box-shadow: 0 4px 14px rgba(0,0,0,0.1);
+    }
+    .btn.review { background: linear-gradient(90deg, #f59e0b, #d97706); }
+    .btn.map { background: linear-gradient(90deg, #3b82f6, #1d4ed8); }
+    .btn.instagram { background: linear-gradient(90deg, #e1306c, #c13584); }
+
+    /* side by side for map + insta */
+    .row {
+      display: flex;
+      gap: 12px;
+    }
+    .row .btn {
+      flex: 1;
+    }
+  </style>
+</head>
+<body>
+  <div class="app">
+    <header>
+      <h1>Infinity Salon</h1>
+      <p>Fast support & trusted reviews</p>
+    </header>
+
+    <main>
+      <div class="info">
+        <strong>💬 Why WhatsApp Connect?</strong>
+        <p>Get instant replies, book services easily, and stay updated — all from the convenience of your WhatsApp. No waiting, no hassle!</p>
+      </div>
+
+      <div class="info">
+        <strong>⭐ Why Reviews Matter?</strong>
+        <p>Your feedback helps us improve and gives confidence to new customers. Every review makes our service better for you.</p>
+      </div>
+
+      <form id="leadForm">
+        <input type="text" id="name" placeholder="Your Name" required />
+        <input type="tel" id="number" placeholder="Your WhatsApp Number" required />
+        <button type="submit">Submit & Open WhatsApp</button>
+      </form>
+    </main>
+
+    <div class="actions">
+      <a class="btn review" href="https://maps.google.com/maps?cid=15071919677261641498&entry=ttu" target="_blank">⭐ Leave a Review</a>
+      <div class="row">
+        <a class="btn map" href="https://maps.google.com/maps?cid=15071919677261641498&entry=ttu" target="_blank">📍 Find Us</a>
+        <a class="btn instagram" href="https://instagram.com/yourhandle" target="_blank">📸 Instagram</a>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    const targetNumber = "918432019333"; // Infinity Salon WhatsApp number
+
+    document.getElementById("leadForm").addEventListener("submit", function(e) {
+      e.preventDefault();
+      const name = document.getElementById("name").value.trim();
+      const number = document.getElementById("number").value.trim();
+      if (!name || !number) {
+        alert("Please fill in your name and WhatsApp number.");
+        return;
+      }
+      const msg = `Hello, my name is ${name}. My WhatsApp number is ${number}.`;
+      const url = `https://wa.me/${targetNumber}?text=${encodeURIComponent(msg)}`;
+      window.open(url, "_blank");
+    });
+  </script>
+</body>
+</html>
